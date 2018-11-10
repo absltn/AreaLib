@@ -2,6 +2,7 @@
 
 namespace AreaLib
 {
+    // triangle shape to calculate area with given 3 sides
     public class Triangle_3s : Shape
     {
         public Triangle_3s()

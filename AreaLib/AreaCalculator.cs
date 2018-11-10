@@ -7,10 +7,11 @@ namespace AreaLib
     [Serializable] // to be implemented
     public class AreaCalculator
     {
-        private List <Shape> shapes;
+        // list of all available shapes which can be used to calculate area
+        private List<Shape> Shapes { get; set; }
         public AreaCalculator()
         {
-            shapes = new List<Shape>();
+            Shapes = new List<Shape>();
 
             // init and add default shapes
 
@@ -19,10 +20,12 @@ namespace AreaLib
             AddShape(circle);                                    
             AddShape(triangle_3s);
         }
-        public void AddShape(Shape f) {
-            if (shapes.Find(x => x.Equals(f)) == null)
+        public void AddShape(Shape f)
+        {
+            // shape is added if only it it not already in the list
+            if (Shapes.Find(x => x.GetType().Equals(f.GetType())) == null)
             {
-                shapes.Add(f);
+                Shapes.Add(f);
             }
         }
         public double Calculate(String f, double[] values)
@@ -36,25 +39,24 @@ namespace AreaLib
 
             // check that there are enough values to calculate
 
-            if (values.Length < shapes.Find(x => x.Name.Equals(f)).Properties)
+            if (values.Length < Shapes.Find(x => x.Name.Equals(f)).Properties)
             {
                 throw new ArgumentException("not enough arguments");
             }
-            return shapes.Find(x => x.Name.Equals(f)).CalculateArea(values);
+            return Shapes.Find(x => x.Name.Equals(f)).CalculateArea(values);
         }
         
         public override string ToString()
         {
             string result = "";
-            foreach (var item in shapes)
+            foreach (var item in Shapes)
             {
                 result += item.Name;
                 result += ",";
                 result += item.Properties;
                 result += " ";
             }
-            return result;
-            
+            return result;     
         }
     }
 }

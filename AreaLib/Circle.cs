@@ -1,7 +1,10 @@
-﻿namespace AreaLib
+﻿using System;
+
+namespace AreaLib
 {
     public class Circle : Shape
     {
+        // circle shape which to calculate area with given radius
         public Circle()
         {
                 Name = "circle";
@@ -9,7 +12,7 @@
         }
         public override double CalculateArea(double[] values)
         {
-            return values[0] * values[0] * pi;
+                return values[0] * values[0] * pi;
         }
     }
 }
