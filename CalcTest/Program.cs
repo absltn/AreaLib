@@ -11,6 +11,7 @@ namespace CalcTest
             double[] values = {3,4,5};
             Circle_D circle_d = new Circle_D();
             calc1.AddShape(circle_d);
+            Console.WriteLine(calc1.ToString());
             Console.WriteLine(calc1.Calculate("triangle_3s", values));
             Console.WriteLine(calc1.Calculate("circle", values));
             Console.WriteLine(calc1.Calculate("circle_d", values));

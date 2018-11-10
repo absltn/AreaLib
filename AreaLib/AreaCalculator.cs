@@ -43,12 +43,17 @@ namespace AreaLib
             return shapes.Find(x => x.Name.Equals(f)).CalculateArea(values);
         }
         
-        public void ShowElements()   // not implemented
+        public override string ToString()
         {
+            string result = "";
             foreach (var item in shapes)
             {
-                Console.WriteLine(item);
+                result += item.Name;
+                result += ",";
+                result += item.Properties;
+                result += " ";
             }
+            return result;
             
         }
     }
