@@ -19,7 +19,7 @@ namespace AreaLib
             // check if triangle exists
 
             if (!(((a + b) > c) && ((b + c) > a) && ((c + a) > b)))
-                throw new ArgumentException("this is not a valid triangle");
+                throw new ArgumentException("This is not a valid triangle");
 
             double p = (a + b + c) / 2;
             return Math.Sqrt(p * (p - a) * (p - b) * (p - c));
