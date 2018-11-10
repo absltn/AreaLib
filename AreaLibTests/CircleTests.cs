@@ -10,21 +10,21 @@ namespace AreaLib.Tests
         public void CircleTest()
         {
             //Arrange /Act
-            Circle c1 = new Circle();
+            Circle testCircle = new Circle();
 
             //Assert
-            Assert.IsTrue(c1.Name == "circle" && c1.Properties == 1);
+            Assert.IsTrue(testCircle.Name == "circle" && testCircle.Properties == 1);
         }
 
         [Test()]
         public void CalculateAreaTest()
         {
             //Arrange
-            Circle c1 = new Circle();
+            Circle testCircle = new Circle();
             double[] values = { 1 };
 
             //Act
-            double result = c1.CalculateArea(values);
+            double result = testCircle.CalculateArea(values);
 
             //Assert
             Assert.IsTrue(result == Shape.pi);

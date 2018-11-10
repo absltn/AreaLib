@@ -20,13 +20,15 @@ namespace AreaLib
             AddShape(circle);                                    
             AddShape(triangle_3s);
         }
-        public void AddShape(Shape f)
+        public bool AddShape(Shape f)
         {
             // shape is added if only it it not already in the list
             if (Shapes.Find(x => x.GetType().Equals(f.GetType())) == null)
             {
                 Shapes.Add(f);
+                return true;
             }
+            return false;
         }
         public double Calculate(String f, double[] values)
         {
@@ -39,7 +41,7 @@ namespace AreaLib
 
             // check that there are enough values to calculate
 
-            if (values.Length < Shapes.Find(x => x.Name.Equals(f)).Properties)
+            if ((values.Length < Shapes.Find(x => x.Name.Equals(f)).Properties)||(values == null))
             {
                 throw new ArgumentException("not enough arguments");
             }

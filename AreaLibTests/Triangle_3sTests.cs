@@ -1,10 +1,6 @@
 ﻿using NUnit.Framework;
-using AreaLib;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AreaLib.Tests
 {
@@ -25,11 +21,11 @@ namespace AreaLib.Tests
         public void CalculateAreaTest()
         {
             //Arrange
-            Triangle_3s t1 = new Triangle_3s();
+            Triangle_3s testTriangle_3s = new Triangle_3s();
             double[] values = {3,4,5};
 
             //Act
-            double result = t1.CalculateArea(values);
+            double result = testTriangle_3s.CalculateArea(values);
 
             //Assert
             Assert.IsTrue(result == 6);
@@ -39,11 +35,11 @@ namespace AreaLib.Tests
         public void InvalidArgumentTest()
         {
             //Arrange
-            Triangle_3s t1 = new Triangle_3s();
+            Triangle_3s testTriangle_3s = new Triangle_3s();
             double[] values = { 1, 10, 5 };
 
             //Act
-            var ex = Assert.Throws<ArgumentException>(() => t1.CalculateArea(values));
+            var ex = Assert.Throws<ArgumentException>(() => testTriangle_3s.CalculateArea(values));
 
             //Assert
             Assert.That(ex.Message, Is.EqualTo("This is not a valid triangle"));
