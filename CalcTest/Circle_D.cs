@@ -1,6 +1,5 @@
 ﻿using AreaLib;
 
-
 namespace CalcTest
 {
     class Circle_D : Shape

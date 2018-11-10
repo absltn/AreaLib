@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace AreaLib
 {
+    [Serializable] // to be implemented
     public class AreaCalculator
     {
         private List <Shape> shapes;
