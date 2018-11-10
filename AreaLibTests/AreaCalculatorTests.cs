@@ -150,7 +150,7 @@ namespace AreaLib.Tests
         }
 
         [Test()]
-        public void RemShapeTestFalse()
+        public void RemShapeTestTrue_2()
         {
             //Arrange
             AreaCalculator calcTest = new AreaCalculator();
@@ -161,6 +161,18 @@ namespace AreaLib.Tests
 
             //Assert
             Assert.That(calcTest.ToString(), Is.EqualTo(""));
+        }
+
+        [Test()]
+
+        public void RemShapeTestFalse()
+        {
+            //Arrange
+            AreaCalculator calcTest = new AreaCalculator();
+            calcTest.RemShape("circle");
+
+            //Act /Assert
+            Assert.IsTrue(calcTest.RemShape("circle") == false);
         }
     }
 }
