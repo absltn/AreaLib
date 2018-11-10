@@ -7,7 +7,11 @@ namespace AreaLib
     [Serializable] // to be implemented
     public class AreaCalculator
     {
-        // list of all available shapes which can be used to calculate area
+        // Shapes is a list of all available shapes which can be
+        // used to calculate area.
+        // In case only arguments are known, are will be calculated
+        // to the first found shape
+
         private List<Shape> Shapes { get; set; }
         public AreaCalculator()
         {
