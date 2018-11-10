@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AreaLib
 {
-    public class Circle: Shape
+    public class Circle : Shape
     {
         public Circle()
         {
