@@ -17,7 +17,7 @@ namespace AreaLib
 
             Circle circle = new Circle();
             Triangle_3s triangle_3s = new Triangle_3s();
-            AddShape(circle);                                    
+            AddShape(circle);
             AddShape(triangle_3s);
         }
         public bool AddShape(Shape f)
@@ -30,6 +30,16 @@ namespace AreaLib
             }
             return false;
         }
+
+        public bool RemShape(string f)
+        {
+            if (Shapes.Find(x => x.Name.Equals(f)) == null)
+            {
+                return false;
+            }
+            Shapes.Remove(Shapes.Find(x => x.Name.Equals(f)));
+            return true;
+        }
         public double Calculate(String f, double[] values)
         {
             // check property value sign
@@ -41,13 +51,32 @@ namespace AreaLib
 
             // check that there are enough values to calculate
 
-            if ((values.Length < Shapes.Find(x => x.Name.Equals(f)).Properties)||(values == null))
+            if ((values.Length < Shapes.Find(x => x.Name.Equals(f)).Properties) || (values == null))
             {
                 throw new ArgumentException("not enough arguments");
             }
             return Shapes.Find(x => x.Name.Equals(f)).CalculateArea(values);
         }
-        
+
+        // searches for the first shape in Shapes List with the same parameter
+        // quantity and returns its area
+        public double Calculate(double[] values)
+        {
+            // check property value sign
+
+            if (values.Any(x => x < 0))
+            {
+                throw new ArgumentException("only positive arguments must be used");
+            }
+
+            if (values.Length < 1)
+            {
+                throw new ArgumentException("not enough arguments");
+            }
+            else
+                return Shapes.Find(x => x.Properties.Equals(values.Length)).CalculateArea(values);
+         }
+
         public override string ToString()
         {
             string result = "";
@@ -58,7 +87,7 @@ namespace AreaLib
                 result += item.Properties;
                 result += " ";
             }
-            return result;     
+            return result;
         }
     }
 }

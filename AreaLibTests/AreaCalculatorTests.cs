@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using AreaLib;
+using NUnit.Framework;
 using System;
 
 namespace AreaLib.Tests
@@ -63,7 +64,7 @@ namespace AreaLib.Tests
 
             //Act 
             double[] testVar = { 1, 2 };
-            
+
             // Assert
             Assert.IsTrue(calcTest.Calculate("test", testVar) == 999);
         }
@@ -101,5 +102,65 @@ namespace AreaLib.Tests
             Assert.That(ex.Message, Is.EqualTo("not enough arguments"));
         }
 
+        [Test()]
+        public void CalculateWithNoNameTest1()
+        {
+            //Arrange
+            AreaCalculator calcTest = new AreaCalculator();
+            double[] var = { 1 };
+
+            //Act /Assert
+            Assert.True(calcTest.Calculate(var) == 3.141592);
+        }
+
+        [Test()]
+        public void CalculateWithNoNameTest2()
+        {
+            //Arrange
+            AreaCalculator calcTest = new AreaCalculator();
+            double[] var = { 3,4,5 };
+
+            //Act /Assert
+            Assert.True(calcTest.Calculate(var) == 6);
+        }
+
+        [Test()]
+        public void CalculateWithNoNameTest3()
+        {
+            //Arrange
+            AreaCalculator calcTest = new AreaCalculator();
+            double[] var = { -3, 4, 5 };
+
+            //Act /Assert
+            var ex = Assert.Throws<ArgumentException>(() => calcTest.Calculate(var));
+            Assert.That(ex.Message, Is.EqualTo("only positive arguments must be used"));
+        }
+
+        [Test()]
+        public void RemShapeTestTrue()
+        {
+            //Arrange
+            AreaCalculator calcTest = new AreaCalculator();
+
+            //Act
+            calcTest.RemShape("circle");
+
+            //Assert
+            Assert.That(calcTest.ToString(), Is.EqualTo("triangle_3s,3 "));
+        }
+
+        [Test()]
+        public void RemShapeTestFalse()
+        {
+            //Arrange
+            AreaCalculator calcTest = new AreaCalculator();
+
+            //Act
+            calcTest.RemShape("circle");
+            calcTest.RemShape("triangle_3s");
+
+            //Assert
+            Assert.That(calcTest.ToString(), Is.EqualTo(""));
+        }
     }
 }
