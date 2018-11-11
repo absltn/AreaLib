@@ -46,8 +46,12 @@ namespace AreaLib
         }
         public double Calculate(String f, double[] values)
         {
-            // check property value sign
+            if (Shapes.Any(x => x.Name.Equals(f)) == false)
+            {
+                throw new ArgumentException("Shape name not found");
+            }
 
+            // check property value sign
             if (values.Any(x => x < 0))
             {
                 throw new ArgumentException("only positive arguments must be used");
@@ -59,6 +63,7 @@ namespace AreaLib
             {
                 throw new ArgumentException("not enough arguments");
             }
+
             return Shapes.Find(x => x.Name.Equals(f)).CalculateArea(values);
         }
 
@@ -78,8 +83,10 @@ namespace AreaLib
                 throw new ArgumentException("not enough arguments");
             }
             else
+            {
                 return Shapes.Find(x => x.Properties.Equals(values.Length)).CalculateArea(values);
-         }
+            }
+        }
 
         public override string ToString()
         {

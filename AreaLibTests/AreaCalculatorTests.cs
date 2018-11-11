@@ -118,7 +118,7 @@ namespace AreaLib.Tests
         {
             //Arrange
             AreaCalculator calcTest = new AreaCalculator();
-            double[] var = { 3,4,5 };
+            double[] var = { 3, 4, 5 };
 
             //Act /Assert
             Assert.True(calcTest.Calculate(var) == 6);
@@ -174,5 +174,18 @@ namespace AreaLib.Tests
             //Act /Assert
             Assert.IsTrue(calcTest.RemShape("circle") == false);
         }
+
+        [Test()]
+        public void CalculateWithNoStringFound()
+        {
+            //Arrange
+            AreaCalculator calcTest = new AreaCalculator();
+            double[] var = { 1 };
+
+            //Act /Assert
+            var ex = Assert.Throws<ArgumentException>(() => calcTest.Calculate("polygon",var));
+            Assert.That(ex.Message, Is.EqualTo("Shape name not found"));
+        }
+        
     }
 }
